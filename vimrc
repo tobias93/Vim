@@ -6,8 +6,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'		" Autocomplete for C++, C, Python, ...
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<C-Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<C-Up>']
 Plugin 'scrooloose/nerdtree'		" File navigator
 Plugin 'tikhomirov/vim-glsl'		" Syntax highlighting for GLSL shaders
 Plugin 'ervandew/supertab'		" Needed to make Ultsnips compatible with YouCompleteMe.
@@ -28,6 +28,9 @@ filetype plugin indent on
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "see :h vundle for more details or wiki for FAQ
 "Put your non-Plugin stuff after this line
+
+" Paste-Mode deaktivieren (Probleme mit iremap)
+set nopaste
 
 " Farben
 set t_Co=256
@@ -51,6 +54,12 @@ set breakindent
 " YCM - YouCompleteMe - Config
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 
+" Pfeiltasten
+inoremap <up> <C-o>gk
+inoremap <down> <C-o>gj
+nnoremap <up> gk
+nnoremap <down> gj
+
 " " Bracket handling
 " autocmd FileType c,cpp,hpp,h noremap ( ()<Esc>i
 " autocmd FileType c,cpp,hpp,h noremap () ()
@@ -62,14 +71,14 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " autocmd FileType c,cpp,hpp,h noremap "" ""
 
 " Automatically start & quit NERDTree, use <F2> to open/close it
-function! StartUp()
-	if 0 == argc()
-		NERDTree
-	end
-endfunction
-autocmd VimEnter * call StartUp()
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <F2> :NERDTreeToggle<CR>
+"function! StartUp()
+"	if 0 == argc()
+"		NERDTree
+"	end
+"endfunction
+"autocmd VimEnter * call StartUp()
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <F2> :NERDTreeToggle<CR>
 
 " Use <F3> to navigate between visible buffers
-map <F3> <C-W>
+"map <F3> <C-W>
