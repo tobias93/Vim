@@ -71,14 +71,14 @@ nnoremap <down> gj
 " autocmd FileType c,cpp,hpp,h noremap "" ""
 
 " Automatically start & quit NERDTree, use <F2> to open/close it
-"function! StartUp()
-"	if 0 == argc()
-"		NERDTree
-"	end
-"endfunction
-"autocmd VimEnter * call StartUp()
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"map <F2> :NERDTreeToggle<CR>
+function! StartUp()
+	if 0 == argc()
+		NERDTree
+	end
+endfunction
+autocmd VimEnter * call StartUp()
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <F2> :NERDTreeToggle<CR>
 
 " Use <F3> to navigate between visible buffers
 "map <F3> <C-W>
