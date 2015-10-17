@@ -41,6 +41,13 @@ set number
 " Einrückungen
 set autoindent
 
+" Umgebrochene Zeilen richtig einrücken
+" benötigt patch:
+" sudo add-apt-repository ppa:eudoxos/vim-breakindent
+" sudo apt-get update
+" sudo apt-get upgrade
+set breakindent
+
 " YCM - YouCompleteMe - Config
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 
