@@ -1,3 +1,23 @@
+" Setup notes
+" 1: Vundle
+" 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" 2: Install all plugins
+" 	:PluginInstall
+" 1: YouCompleteMe
+" 	Compile it using cmake. Details can be found at the GitHub repo
+" 2: Breakindent
+" 	Use a patched version of Vim. On Ubuntu 14.04:
+" 	sudo add-apt-repository ppa:eudoxos/vim-breakindent
+" 	sudo apt-get update
+" 	sudo apt-get upgrade
+" 3: Airline status bar
+" 	Get a working powerline font
+" 	https://github.com/bling/vim-airline#integrating-with-powerline-fonts
+" 4: Solarized color scheme
+" 	Configure your terminal emulator with the correct solarized
+" 	colorscheme. See:
+" 	http://ethanschoonover.com/solarized
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -18,7 +38,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plugin 'honza/vim-snippets' 		" Snippets (Some default snippets)
-Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8' 		" Python PEP8 checking
+Plugin 'bling/vim-airline' 		" Status line
+Plugin 'altercation/vim-colors-solarized' " Solarized colorscheme
 call vundle#end()
 filetype plugin indent on
 "Brief help
@@ -33,10 +55,15 @@ filetype plugin indent on
 set nopaste
 
 " Farben
-set t_Co=256
+set t_Co=16
 
 " Syntaxhighlighting
-syntax on
+syntax enable
+
+" Solarized color scheme (dark)
+set background=dark
+let g:solarized_termcolors=16
+colorscheme solarized
 
 " Zeilennummern
 set number
@@ -45,10 +72,6 @@ set number
 set autoindent
 
 " Umgebrochene Zeilen richtig einrücken
-" benötigt patch:
-" sudo add-apt-repository ppa:eudoxos/vim-breakindent
-" sudo apt-get update
-" sudo apt-get upgrade
 set breakindent
 
 " YCM - YouCompleteMe - Config
@@ -59,6 +82,11 @@ inoremap <up> <C-o>gk
 inoremap <down> <C-o>gj
 nnoremap <up> gk
 nnoremap <down> gj
+
+" Status bar (airline plugin)
+set laststatus=2
+set lazyredraw 
+let g:airline_powerline_fonts = 1
 
 " " Bracket handling
 " autocmd FileType c,cpp,hpp,h noremap ( ()<Esc>i
