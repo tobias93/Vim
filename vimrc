@@ -41,7 +41,9 @@ Plugin 'honza/vim-snippets' 		" Snippets (Some default snippets)
 Plugin 'nvie/vim-flake8' 		" Python PEP8 checking
 Plugin 'bling/vim-airline' 		" Status line
 Plugin 'altercation/vim-colors-solarized' " Solarized colorscheme
-Plugin 'tpope/vim-fugitive' 		" Git visualisation
+Plugin 'tpope/vim-fugitive' 		" Git indicator
+Plugin 'bling/vim-bufferline' 		" Keep track of buffers
+Plugin 'qpkorr/vim-bufkill' 		" Close buffers
 call vundle#end()
 filetype plugin indent on
 "Brief help
@@ -88,6 +90,9 @@ nnoremap <down> gj
 set laststatus=2
 set lazyredraw 
 let g:airline_powerline_fonts = 1
+
+" Buffers
+set hidden
 
 " " Bracket handling
 " autocmd FileType c,cpp,hpp,h noremap ( ()<Esc>i
