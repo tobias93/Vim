@@ -41,6 +41,7 @@ Plugin 'honza/vim-snippets' 		" Snippets (Some default snippets)
 Plugin 'nvie/vim-flake8' 		" Python PEP8 checking
 Plugin 'bling/vim-airline' 		" Status line
 Plugin 'altercation/vim-colors-solarized' " Solarized colorscheme
+Plugin 'tpope/vim-fugitive' 		" Git visualisation
 call vundle#end()
 filetype plugin indent on
 "Brief help
