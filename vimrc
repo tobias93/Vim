@@ -42,8 +42,8 @@ Plugin 'nvie/vim-flake8' 		" Python PEP8 checking
 Plugin 'bling/vim-airline' 		" Status line
 Plugin 'altercation/vim-colors-solarized' " Solarized colorscheme
 Plugin 'tpope/vim-fugitive' 		" Git indicator
-Plugin 'bling/vim-bufferline' 		" Keep track of buffers
-Plugin 'qpkorr/vim-bufkill' 		" Close buffers
+Plugin 'qpkorr/vim-bufkill' 		" Close buffers with :BD
+Plugin 'kien/ctrlp.vim' 		" Open files more quickly
 call vundle#end()
 filetype plugin indent on
 "Brief help
@@ -56,6 +56,9 @@ filetype plugin indent on
 
 " Paste-Mode deaktivieren (Probleme mit iremap)
 set nopaste
+
+" Leader key
+let mapleader = ","
 
 " Farben
 set t_Co=16
@@ -90,9 +93,20 @@ nnoremap <down> gj
 set laststatus=2
 set lazyredraw 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tabs = 0
 
 " Buffers
 set hidden
+
+" CtrlP - fuzzy file/buffer/mru finder
+nnoremap <C-L> :CtrlPBuffer<Return>
+
+" Switch between header- and source files
+map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 
 " " Bracket handling
 " autocmd FileType c,cpp,hpp,h noremap ( ()<Esc>i
@@ -105,14 +119,14 @@ set hidden
 " autocmd FileType c,cpp,hpp,h noremap "" ""
 
 " Automatically start & quit NERDTree, use <F2> to open/close it
-function! StartUp()
-	if 0 == argc()
-		NERDTree
-	end
-endfunction
-autocmd VimEnter * call StartUp()
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <F2> :NERDTreeToggle<CR>
+"function! StartUp()
+"	if 0 == argc()
+"		NERDTree
+"	end
+"endfunction
+"autocmd VimEnter * call StartUp()
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <F2> :NERDTreeToggle<CR>
 
 " Use <F3> to navigate between visible buffers
 "map <F3> <C-W>
